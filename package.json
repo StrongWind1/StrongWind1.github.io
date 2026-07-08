@@ -1,0 +1,14 @@
+{
+  "name": "strongwind-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "strongwind.dev landing site tooling",
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "build:fallback": "node scripts/gen-static.js && prettier --write index.html assets/repos.json"
+  },
+  "devDependencies": {
+    "prettier": "3.9.4"
+  }
+}

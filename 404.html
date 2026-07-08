@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+    <title>Page not found - StrongWind</title>
+    <meta
+      name="robots"
+      content="noindex"
+    />
+    <meta
+      name="color-scheme"
+      content="light dark"
+    />
+    <meta
+      name="referrer"
+      content="no-referrer"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="#ffffff"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#0f1626"
+    />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; base-uri 'self'; form-action 'none'; object-src 'none'; frame-src 'none'; img-src 'self'; style-src 'self'; script-src 'self' 'sha256-k1+lqS3hccvnYbvM+QtFdosXI4V7b1Bn2TkR/AXxM54='; font-src 'self'"
+    />
+    <link
+      rel="icon"
+      href="/favicon.svg"
+      type="image/svg+xml"
+    />
+    <link
+      rel="icon"
+      href="/assets/avatar.webp"
+      type="image/webp"
+      sizes="180x180"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="/assets/avatar.jpg"
+    />
+    <link
+      rel="stylesheet"
+      href="/assets/pico.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/assets/site.css"
+    />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("theme");
+          if (t === "light" || t === "dark") {
+            document.documentElement.setAttribute("data-theme", t);
+          }
+        } catch {}
+      })();
+    </script>
+  </head>
+  <body>
+    <main class="container">
+      <section class="hero">
+        <p class="kicker">404</p>
+        <h1>This page drifted off.</h1>
+        <p>
+          The page you were after is not here. It may have moved, or the link
+          was mistyped.
+        </p>
+        <div class="actions">
+          <a
+            class="btn btn-primary"
+            href="/"
+            >Back to home</a
+          >
+          <a
+            class="btn btn-ghost"
+            href="/#tools"
+            >Browse the tools</a
+          >
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

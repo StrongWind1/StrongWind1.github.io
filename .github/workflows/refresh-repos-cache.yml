@@ -1,0 +1,103 @@
+name: refresh-repos-cache
+
+# Keep assets/repos.json (the API fallback the site uses when the live GitHub
+# API is unreachable) and the static #tools snapshot in index.html in step with
+# reality. Runs weekly and commits only on a real diff.
+on:
+  schedule:
+    # Mondays 06:17 UTC - off the top of the hour to dodge scheduler congestion.
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+
+# Deny by default at the top level; grant the minimum on the one job that needs it.
+permissions: {}
+
+concurrency:
+  group: refresh-repos-cache
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    name: Refresh repos.json snapshot
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write # commit the refreshed snapshot back to main
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install pinned tooling
+        run: |
+          set -euo pipefail
+          npm ci --no-audit --no-fund
+
+      - name: Regenerate repos.json from the GitHub API
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          # sort_by(.name) keeps the file order stable so diffs reflect real
+          # content changes, not the volatile pushed-at ordering of the API.
+          gh api "users/StrongWind1/repos?per_page=100&sort=pushed" --jq '
+            [ .[]
+              | select(.fork == false and .archived == false and .private == false)
+              | select(.name != "StrongWind1" and .name != "StrongWind1.github.io")
+              | {name, description, language, stargazers_count, html_url, homepage, topics}
+            ] | sort_by(.name)' > assets/repos.json
+
+      - name: Rebuild the static fallback and normalise formatting
+        run: |
+          set -euo pipefail
+          # Regenerates the #tools snapshot in index.html from repos.json, then
+          # runs Prettier over both so the committed files stay canonical.
+          npm run build:fallback
+
+      - name: Commit the refresh as a signed commit if anything changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- assets/repos.json index.html; then
+            echo "Snapshot unchanged; nothing to commit."
+            exit 0
+          fi
+          # Base64-encode the tracked files that actually changed this run.
+          additions='[]'
+          for f in assets/repos.json index.html; do
+            if ! git diff --quiet -- "$f"; then
+              additions=$(jq --arg p "$f" --arg c "$(base64 -w0 "$f")" \
+                '. + [{path: $p, contents: $c}]' <<< "$additions")
+            fi
+          done
+          # Commits created through the GraphQL createCommitOnBranch mutation are
+          # signed by GitHub (Verified) and attributed to github-actions[bot] -
+          # no private key to manage. expectedHeadOid guards against a racing push.
+          jq -n \
+            --arg repo "$GITHUB_REPOSITORY" \
+            --arg oid "$(git rev-parse HEAD)" \
+            --argjson additions "$additions" \
+            '{
+              query: "mutation($input: CreateCommitOnBranchInput!) { createCommitOnBranch(input: $input) { commit { oid } } }",
+              variables: {
+                input: {
+                  branch: {
+                    repositoryNameWithOwner: $repo,
+                    branchName: "main",
+                  },
+                  message: {
+                    headline: "chore: refresh repos.json snapshot and static fallback",
+                  },
+                  expectedHeadOid: $oid,
+                  fileChanges: { additions: $additions },
+                },
+              },
+            }' | gh api graphql --input -

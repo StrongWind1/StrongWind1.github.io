@@ -1,0 +1,517 @@
+/*
+ * strongwind.dev - styles layered on Pico CSS v2.
+ * Pico supplies the base system and light/dark handling; this file rebrands the
+ * accent to blue, hosts Inter locally, and adds the small amount of layout Pico
+ * does not cover. Loaded after Pico so equal-specificity overrides win.
+ */
+
+/* --- Inter (self-hosted, screen-optimised) ------------------------------- */
+
+@font-face {
+  font-family: "Inter Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("/assets/fonts/inter-latin-wght-normal.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+2074, U+20AC, U+2122,
+    U+2212, U+2215;
+}
+
+:root {
+  --pico-font-family-sans-serif:
+    "Inter Variable", system-ui, -apple-system, "Segoe UI", roboto,
+    "Helvetica Neue", arial, sans-serif;
+  --pico-font-family: var(--pico-font-family-sans-serif);
+  --pico-border-radius: 0.5rem;
+
+  scroll-behavior: smooth;
+}
+
+/* --- Blue accent + reading-optimised neutrals ---------------------------- */
+
+/* AA+ contrast in both themes; surfaces are off-white / off-black, never pure
+   #fff or #000, to cut glare and halation. */
+
+/* Light selector mirrors Pico's own `:root:not([data-theme=dark])` so the brand
+   palette also wins in OS-driven auto mode, not only when data-theme is set. */
+:root:not([data-theme="dark"]),
+:root[data-theme="light"] {
+  --brand: #1d4ed8;
+  --pico-primary: #1d4ed8;
+  --pico-primary-background: #1d4ed8;
+  --pico-primary-hover: #1a44bd;
+  --pico-primary-hover-background: #1a44bd;
+  --pico-primary-focus: rgb(29 78 216 / 28%);
+  --pico-primary-inverse: #fff;
+  --pico-primary-underline: rgb(29 78 216 / 40%);
+  --pico-background-color: #fff;
+  --pico-color: #1b2433;
+
+  /* Foreground for icon buttons; Pico hijacks --pico-color to its inverse on
+     <button>, so icons need a token it does not touch. */
+  --fg: #1b2433;
+  --pico-muted-color: #55617a;
+  --pico-card-background-color: #fff;
+  --pico-card-sectioning-background-color: #f4f6fb;
+  --pico-muted-border-color: #e3e8f0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --brand: #60a5fa;
+    --pico-primary: #60a5fa;
+    --pico-primary-background: #1d4ed8;
+    --pico-primary-hover: #93c5fd;
+    --pico-primary-hover-background: #2563eb;
+    --pico-primary-focus: rgb(96 165 250 / 30%);
+    --pico-primary-inverse: #fff;
+    --pico-primary-underline: rgb(96 165 250 / 40%);
+    --pico-background-color: #0f1626;
+    --pico-color: #e6eaf3;
+    --fg: #e6eaf3;
+    --pico-muted-color: #98a4bb;
+    --pico-card-background-color: #172033;
+    --pico-card-sectioning-background-color: #131a29;
+    --pico-muted-border-color: #27314a;
+  }
+}
+
+:root[data-theme="dark"] {
+  --brand: #60a5fa;
+  --pico-primary: #60a5fa;
+  --pico-primary-background: #1d4ed8;
+  --pico-primary-hover: #93c5fd;
+  --pico-primary-hover-background: #2563eb;
+  --pico-primary-focus: rgb(96 165 250 / 30%);
+  --pico-primary-inverse: #fff;
+  --pico-primary-underline: rgb(96 165 250 / 40%);
+  --pico-background-color: #0f1626;
+  --pico-color: #e6eaf3;
+  --fg: #e6eaf3;
+  --pico-muted-color: #98a4bb;
+  --pico-card-background-color: #172033;
+  --pico-card-sectioning-background-color: #131a29;
+  --pico-muted-border-color: #27314a;
+}
+
+/* --- Base ---------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.ico {
+  flex: none;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.14em;
+}
+
+/* Off-screen icon-sprite container. Uses a class rather than the `hidden`
+   attribute (invalid on <svg> per the SVG spec) or an inline style (blocked by
+   the page CSP); zero-box keeps <use> references working in every engine. */
+.sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.skip {
+  position: absolute;
+  top: -3rem;
+  left: 0.5rem;
+  z-index: 100;
+  padding: 0.5rem 0.9rem;
+  color: var(--pico-primary-inverse);
+  background: var(--pico-primary-background);
+  border-radius: 0.5rem;
+  transition: top 0.15s ease;
+}
+
+.skip:focus {
+  top: 0.5rem;
+}
+
+/* Focus ring. Defined early so it precedes higher-specificity link rules. */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 0.4rem;
+}
+
+/* --- Header -------------------------------------------------------------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--pico-background-color) 82%, transparent);
+  backdrop-filter: saturate(1.4) blur(10px);
+  -webkit-backdrop-filter: saturate(1.4) blur(10px);
+  border-bottom: 1px solid var(--pico-muted-border-color);
+}
+
+.nav {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.55rem 0;
+}
+
+.brand {
+  display: inline-flex;
+  gap: 0.55rem;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+  color: var(--pico-color);
+  text-decoration: none;
+}
+
+/* Circular + bordered so the dark-background avatar reads as an avatar chip
+   rather than a hard dark square on the light theme. */
+.brand img {
+  width: 1.7rem;
+  height: 1.7rem;
+  border: 1px solid var(--pico-muted-border-color);
+  border-radius: 50%;
+}
+
+.brand .dot {
+  color: var(--brand);
+}
+
+.nav-actions {
+  display: inline-flex;
+  gap: 0.3rem;
+  align-items: center;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.3rem;
+  height: 2.3rem;
+  padding: 0;
+  margin: 0;
+  color: var(--fg);
+  line-height: 1;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.icon-btn:hover {
+  color: var(--brand);
+  background: var(--pico-card-sectioning-background-color);
+}
+
+.icon-btn .ico {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+/* Toggle glyph: sun in dark, moon in light. Pure CSS so it is correct pre-JS. */
+#theme-toggle .i-sun {
+  display: none;
+}
+
+#theme-toggle .i-moon {
+  display: block;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) #theme-toggle .i-sun {
+    display: block;
+  }
+
+  :root:not([data-theme="light"]) #theme-toggle .i-moon {
+    display: none;
+  }
+}
+
+:root[data-theme="dark"] #theme-toggle .i-sun {
+  display: block;
+}
+
+:root[data-theme="dark"] #theme-toggle .i-moon {
+  display: none;
+}
+
+:root[data-theme="light"] #theme-toggle .i-sun {
+  display: none;
+}
+
+:root[data-theme="light"] #theme-toggle .i-moon {
+  display: block;
+}
+
+/* --- Sections ------------------------------------------------------------ */
+
+section {
+  margin-block: clamp(2rem, 5vw, 3.25rem);
+}
+
+.hero {
+  margin-top: clamp(1.75rem, 5vw, 2.75rem);
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(1.5rem, 3.6vw, 2.4rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+
+  /* Keep the title on one line where it fits; wrap gracefully on narrow
+     viewports instead of forcing an early break with a max-width. */
+  text-wrap: balance;
+}
+
+/* --- Tool groups + compact list ------------------------------------------ */
+
+.group {
+  margin-bottom: 1.75rem;
+}
+
+.group:last-child {
+  margin-bottom: 0;
+}
+
+.group > h2,
+.eyebrow {
+  margin-bottom: 0.55rem;
+  padding-bottom: 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pico-muted-color);
+  border-bottom: 1px solid var(--pico-muted-border-color);
+}
+
+.list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.7rem 0.4rem;
+  border-bottom: 1px solid var(--pico-muted-border-color);
+}
+
+.item:hover {
+  background: var(--pico-card-sectioning-background-color);
+}
+
+.item:focus-within {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 0.4rem;
+}
+
+.item-main {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.item-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  align-items: baseline;
+  margin-bottom: 0.15rem;
+}
+
+.item-name {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--pico-color);
+  text-decoration: none;
+}
+
+.item-name:hover {
+  color: var(--brand);
+}
+
+/* Language tag sits beside the name, a step smaller. */
+.item-lang {
+  display: inline-flex;
+  gap: 0.3rem;
+  align-items: center;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--pico-muted-color);
+}
+
+.item-lang::before {
+  width: 0.5rem;
+  height: 0.5rem;
+  background: var(--dot, var(--pico-muted-color));
+  border-radius: 50%;
+  content: "";
+}
+
+.lang-python {
+  --dot: #3572a5;
+}
+
+.lang-rust {
+  --dot: #d1783a;
+}
+
+.lang-ref {
+  --dot: #8957e5;
+}
+
+.item-desc {
+  margin: 0;
+  color: var(--pico-muted-color);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+/* Docs + stars, centred in a fixed right column. */
+.item-links {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: center;
+  min-width: 4rem;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.item-links a {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.item-links a:hover {
+  text-decoration: underline;
+}
+
+.stars {
+  display: inline-flex;
+  gap: 0.28rem;
+  align-items: center;
+  color: var(--pico-muted-color);
+  font-variant-numeric: tabular-nums;
+}
+
+.stars .ico {
+  color: #e3b341;
+}
+
+/* --- Footer -------------------------------------------------------------- */
+
+.site-footer {
+  padding-block: 1.5rem;
+  margin-top: 1.5rem;
+  font-size: 0.86rem;
+  color: var(--pico-muted-color);
+  border-top: 1px solid var(--pico-muted-border-color);
+}
+
+.footer-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-links {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* --- 404 page bits (btn, kicker) ----------------------------------------- */
+
+.kicker {
+  display: inline-block;
+  margin-bottom: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  align-items: center;
+  margin-top: 1.4rem;
+}
+
+.btn {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.55rem 1.05rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0.5rem;
+}
+
+.btn-primary {
+  color: var(--pico-primary-inverse);
+  background: var(--pico-primary-background);
+  border: 1px solid var(--pico-primary-background);
+}
+
+.btn-primary:hover {
+  color: var(--pico-primary-inverse);
+  background: var(--pico-primary-hover-background);
+  border-color: var(--pico-primary-hover-background);
+}
+
+.btn-ghost {
+  color: var(--pico-color);
+  background: transparent;
+  border: 1px solid var(--pico-muted-border-color);
+}
+
+.btn-ghost:hover {
+  color: var(--brand);
+  border-color: var(--brand);
+}

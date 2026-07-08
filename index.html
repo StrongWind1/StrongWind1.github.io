@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+    <title>StrongWind - Windows/AD &amp; Wi-Fi Security Tools</title>
+    <meta
+      name="description"
+      content="Open-source Windows/Active Directory and Wi-Fi security research tools by StrongWind: credential validation, Kerberos, NTDS.dit parsing, password protocols, and WPA/WEP handshake analysis."
+    />
+    <link
+      rel="canonical"
+      href="https://strongwind.dev/"
+    />
+
+    <meta
+      name="color-scheme"
+      content="light dark"
+    />
+    <meta
+      name="referrer"
+      content="no-referrer"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="#ffffff"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#0f1626"
+    />
+
+    <meta
+      property="og:type"
+      content="website"
+    />
+    <meta
+      property="og:site_name"
+      content="StrongWind"
+    />
+    <meta
+      property="og:title"
+      content="StrongWind - Windows/AD &amp; Wi-Fi Security Tools"
+    />
+    <meta
+      property="og:description"
+      content="Open-source Windows/Active Directory and Wi-Fi security research tools: credentials, Kerberos, NTDS.dit, password protocols, and WPA/WEP analysis."
+    />
+    <meta
+      property="og:url"
+      content="https://strongwind.dev/"
+    />
+    <meta
+      name="twitter:card"
+      content="summary"
+    />
+    <meta
+      name="twitter:title"
+      content="StrongWind - Windows/AD &amp; Wi-Fi Security Tools"
+    />
+    <meta
+      name="twitter:description"
+      content="Open-source Windows/AD and Wi-Fi security research tools by StrongWind."
+    />
+
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; base-uri 'self'; form-action 'none'; object-src 'none'; frame-src 'none'; img-src 'self' https://strongwind.goatcounter.com; style-src 'self'; script-src 'self' 'sha256-k1+lqS3hccvnYbvM+QtFdosXI4V7b1Bn2TkR/AXxM54=' https://gc.zgo.at; connect-src 'self' https://api.github.com https://strongwind.goatcounter.com; font-src 'self'; manifest-src 'self'"
+    />
+
+    <link
+      rel="icon"
+      href="/favicon.svg"
+      type="image/svg+xml"
+    />
+    <link
+      rel="icon"
+      href="/assets/avatar.webp"
+      type="image/webp"
+      sizes="180x180"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="/assets/avatar.jpg"
+    />
+
+    <link
+      rel="preconnect"
+      href="https://api.github.com"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/assets/fonts/inter-latin-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <link
+      rel="stylesheet"
+      href="/assets/pico.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/assets/site.css"
+    />
+
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("theme");
+          if (t === "light" || t === "dark") {
+            document.documentElement.setAttribute("data-theme", t);
+          }
+        } catch {}
+      })();
+    </script>
+  </head>
+  <body>
+    <a
+      class="skip"
+      href="#main"
+      >Skip to content</a
+    >
+
+    <svg
+      class="sprite"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <symbol
+        id="i-star"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill="currentColor"
+          d="M8 12.27l-4.15 2.18.79-4.62L1.28 6.56l4.64-.67L8 1.68l2.08 4.21 4.64.67-3.36 3.27.79 4.62z"
+        />
+      </symbol>
+      <symbol
+        id="i-github"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill="currentColor"
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+        />
+      </symbol>
+      <symbol
+        id="i-mail"
+        viewBox="0 0 24 24"
+      >
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z M22 6l-10 7L2 6"
+        />
+      </symbol>
+    </svg>
+
+    <header class="site-header">
+      <div class="container">
+        <nav
+          class="nav"
+          aria-label="Primary"
+        >
+          <a
+            class="brand"
+            href="/"
+            aria-label="StrongWind home"
+          >
+            <img
+              src="/assets/avatar.webp"
+              alt=""
+              width="27"
+              height="27"
+            />
+            <span>Strong<span class="dot">Wind</span></span>
+          </a>
+          <div class="nav-actions">
+            <button
+              id="theme-toggle"
+              class="icon-btn"
+              type="button"
+              aria-label="Switch theme"
+            >
+              <svg
+                class="ico i-sun"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <g
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="4.5"
+                  />
+                  <path
+                    d="M12 2v2 M12 20v2 M4.2 4.2l1.4 1.4 M18.4 18.4l1.4 1.4 M2 12h2 M20 12h2 M4.2 19.8l1.4-1.4 M18.4 5.6l1.4-1.4"
+                  />
+                </g>
+              </svg>
+              <svg
+                class="ico i-moon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  fill="currentColor"
+                  d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"
+                />
+              </svg>
+            </button>
+            <a
+              class="icon-btn"
+              href="https://github.com/StrongWind1"
+              rel="noopener"
+              aria-label="GitHub profile"
+            >
+              <svg
+                class="ico"
+                aria-hidden="true"
+              >
+                <use href="#i-github" />
+              </svg>
+            </a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main
+      id="main"
+      class="container"
+    >
+      <section
+        class="hero"
+        aria-labelledby="hero-title"
+      >
+        <h1 id="hero-title">Security tools for Active Directory and Wi-Fi.</h1>
+      </section>
+
+      <section
+        id="tools"
+        aria-label="Tools"
+      >
+        <div class="group">
+          <h2>Active Directory &amp; Windows</h2>
+          <ul class="list">
+            <li
+              class="item"
+              data-repo="CredWolf"
+            >
+              <div class="item-main">
+                <div class="item-head">
+                  <a
+                    class="item-name"
+                    href="https://github.com/StrongWind1/CredWolf"
+                    rel="noopener"
+                    >CredWolf</a
+                  >
+                  <span class="item-lang lang-python">Python</span>
+                </div>
+                <p class="item-desc">
+                  Validate AD credentials over NTLM and Kerberos - passwords,
+                  hashes, keys, and tickets
+                </p>
+              </div>
+              <span class="item-links">
+                <a
+                  href="https://strongwind1.github.io/CredWolf/"
+                  rel="noopener"
+                  >Docs</a
+                >
+                <span
+                  class="stars"
+                  title="GitHub stars"
+                  ><svg
+                    class="ico"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-star"></use></svg
+                  ><span class="stars-count">12</span></span
+                >
+              </span>
+            </li>
+            <li
+              class="item"
+              data-repo="Kerberos"
+            >
+              <div class="item-main">
+                <div class="item-head">
+                  <a
+                    class="item-name"
+                    href="https://github.com/StrongWind1/Kerberos"
+                    rel="noopener"
+                    >Kerberos</a
+                  >
+                  <span class="item-lang lang-ref">Reference</span>
+                </div>
+                <p class="item-desc">
+                  Comprehensive reference for Kerberos authentication in
+                  Microsoft Active Directory - protocol internals, security
+                  configuration, and attack techniques.
+                </p>
+              </div>
+              <span class="item-links">
+                <a
+                  href="https://strongwind1.github.io/Kerberos/"
+                  rel="noopener"
+                  >Docs</a
+                >
+                <span
+                  class="stars"
+                  title="GitHub stars"
+                  ><svg
+                    class="ico"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-star"></use></svg
+                  ><span class="stars-count">7</span></span
+                >
+              </span>
+            </li>
+            <li
+              class="item"
+              data-repo="KerbWolf"
+            >
+              <div class="item-main">
+                <div class="item-head">
+                  <a
+                    class="item-name"
+                    href="https://github.com/StrongWind1/KerbWolf"
+                    rel="noopener"
+                    >KerbWolf</a
+                  >
+                  <span class="item-lang lang-python">Python</span>
+                </div>
+                <p class="item-desc">
+                  Kerberos roasting and TGT attack toolkit for Active Directory
+                </p>
+              </div>
+              <span class="item-links">
+                <a
+                  href="https://strongwind1.github.io/KerbWolf/"
+                  rel="noopener"
+                  >Docs</a
+                >
+                <span
+                  class="stars"
+                  title="GitHub stars"
+                  ><svg
+                    class="ico"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-star"></use></svg
+                  ><span class="stars-count">2</span></span
+                >
+              </span>
+            </li>
+            <li
+              class="item"
+              data-repo="AD-SecretGen"
+            >
+              <div class="item-main">
+                <div class="item-head">
+                  <a
+                    class="item-name"
+                    href="https://github.com/StrongWind1/AD-SecretGen"
+                    rel="noopener"
+                    >AD-SecretGen</a
+                  >
+                  <span class="item-lang lang-python">Python</span>
+                </div>
+                <p class="item-desc">
+                  Derive Active Directory password hashes and Kerberos keys from
+                  a cleartext password - the inverse of NTDSWolf.
+                </p>
+              </div>
+              <span class="item-links">
+                <a
+                  href="https://strongwind1.github.io/AD-SecretGen/"
+                  rel="noopener"
+                  >Docs</a
+                >
+                <span
+                  class="stars"
+                  title="GitHub stars"
+                  ><svg
+                    class="ico"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-star"></use></svg
+                  ><span class="stars-count">1</span></span
+                >
+              </span>
+            </li>
+            <li
+              class="item"
+              data-repo="NTDSWolf"
+            >
+              <div class="item-main">
+                <div class="item-head">
+                  <a
+                    class="item-name"
+                    href="https://github.com/StrongWind1/NTDSWolf"
+                    rel="noopener"
+                    >NTDSWolf</a
+                  >
+                  <span class="item-lang lang-python">Python</span>
+                </div>
+                <p class="item-desc">
+                  Offline NTDS.dit parser and credential extractor for Active
+                  Directory forensics
+                </p>
+              </div>
+              <span class="item-links">
+                <a
+                  href="https://strongwind1.github.io/NTDSWolf/"
+                  rel="noopener"
+                  >Docs</a
+                >
+                <span
+                  class="stars"
+                  title="GitHub stars"
+                  ><svg
+                    class="ico"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-star"></use></svg
+                  ><span class="stars-count">1</span></span
+                >
+              </span>
+            </li>
+            <li
+              class="item"
+              data-repo="PassWolf"
+            >
+              <div class="item-main">
+                <div class="item-head">
+                  <a
+                    class="item-name"
+                    href="https://github.com/StrongWind1/PassWolf"
+                    rel="noopener"
+                    >PassWolf</a
+                  >
+                  <span class="item-lang lang-python">Python</span>
+                </div>
+                <p class="item-desc">
+                  Correct, spec-compliant Active Directory password change,
+                  reset, and policy read over SAMR, Netlogon, LSA, Kerberos, and
+                  LDAP - including the AES paths impacket lacks.
+                </p>
+              </div>
+              <span class="item-links">
+                <a
+                  href="https://strongwind1.github.io/PassWolf/"
+                  rel="noopener"
+                  >Docs</a
+                >
+                <span
+                  class="stars"
+                  title="GitHub stars"
+                  ><svg
+                    class="ico"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-star"></use></svg
+                  ><span class="stars-count">1</span></span
+                >
+              </span>
+            </li>
+          </ul>
+        </div>
+        <div class="group">
+          <h2>Wi-Fi</h2>
+          <ul class="list">
+            <li
+              class="item"
+              data-repo="WPAWolf"
+            >
+              <div class="item-main">
+                <div class="item-head">
+                  <a
+                    class="item-name"
+                    href="https://github.com/StrongWind1/WPAWolf"
+                    rel="noopener"
+                    >WPAWolf</a
+                  >
+                  <span class="item-lang lang-rust">Rust</span>
+                </div>
+                <p class="item-desc">
+                  Pure-Rust WPA / WPA2 / WPA3 PSK handshake extractor for
+                  hashcat modes 22000 + 37100. Never misses a hash.
+                </p>
+              </div>
+              <span class="item-links">
+                <a
+                  href="https://strongwind1.github.io/WiFi_Cracking/"
+                  rel="noopener"
+                  >Docs</a
+                >
+                <span
+                  class="stars"
+                  title="GitHub stars"
+                  ><svg
+                    class="ico"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-star"></use></svg
+                  ><span class="stars-count">7</span></span
+                >
+              </span>
+            </li>
+            <li
+              class="item"
+              data-repo="WiFi_Cracking"
+            >
+              <div class="item-main">
+                <div class="item-head">
+                  <a
+                    class="item-name"
+                    href="https://github.com/StrongWind1/WiFi_Cracking"
+                    rel="noopener"
+                    >WiFi_Cracking</a
+                  >
+                  <span class="item-lang lang-ref">Reference</span>
+                </div>
+                <p class="item-desc">
+                  Complete technical reference for WPA/WPA2/WPA3 PSK security
+                  analysis
+                </p>
+              </div>
+              <span class="item-links">
+                <a
+                  href="https://strongwind1.github.io/WiFi_Cracking/"
+                  rel="noopener"
+                  >Docs</a
+                >
+                <span
+                  class="stars"
+                  title="GitHub stars"
+                  ><svg
+                    class="ico"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-star"></use></svg
+                  ><span class="stars-count">3</span></span
+                >
+              </span>
+            </li>
+            <li
+              class="item"
+              data-repo="WEPWolf"
+            >
+              <div class="item-main">
+                <div class="item-head">
+                  <a
+                    class="item-name"
+                    href="https://github.com/StrongWind1/WEPWolf"
+                    rel="noopener"
+                    >WEPWolf</a
+                  >
+                  <span class="item-lang lang-rust">Rust</span>
+                </div>
+                <p class="item-desc">
+                  Offline, passive WEP key recovery from 802.11 captures
+                </p>
+              </div>
+              <span class="item-links">
+                <a
+                  href="https://strongwind1.github.io/WEPWolf/"
+                  rel="noopener"
+                  >Docs</a
+                >
+                <span
+                  class="stars"
+                  title="GitHub stars"
+                  ><svg
+                    class="ico"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-star"></use></svg
+                  ><span class="stars-count">2</span></span
+                >
+              </span>
+            </li>
+          </ul>
+        </div>
+        <div class="group">
+          <h2>Network</h2>
+          <ul class="list">
+            <li
+              class="item"
+              data-repo="NFSWolf"
+            >
+              <div class="item-main">
+                <div class="item-head">
+                  <a
+                    class="item-name"
+                    href="https://github.com/StrongWind1/NFSWolf"
+                    rel="noopener"
+                    >NFSWolf</a
+                  >
+                  <span class="item-lang lang-rust">Rust</span>
+                </div>
+                <p class="item-desc">
+                  Fast native NFS security toolkit - recon, enumeration,
+                  exploitation, and interactive shell over NFSv2/v3/v4
+                </p>
+              </div>
+              <span class="item-links">
+                <span
+                  class="stars"
+                  title="GitHub stars"
+                  ><svg
+                    class="ico"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-star"></use></svg
+                  ><span class="stars-count">3</span></span
+                >
+              </span>
+            </li>
+            <li
+              class="item"
+              data-repo="tpwalk"
+            >
+              <div class="item-main">
+                <div class="item-head">
+                  <a
+                    class="item-name"
+                    href="https://github.com/StrongWind1/tpwalk"
+                    rel="noopener"
+                    >tpwalk</a
+                  >
+                  <span class="item-lang lang-python">Python</span>
+                </div>
+                <p class="item-desc">
+                  TP-Link GPL source and firmware URL scraper, verifier, and
+                  downloader
+                </p>
+              </div>
+              <span class="item-links">
+                <a
+                  href="https://strongwind1.github.io/tpwalk/"
+                  rel="noopener"
+                  >Docs</a
+                >
+                <span
+                  class="stars"
+                  title="GitHub stars"
+                  ><svg
+                    class="ico"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-star"></use></svg
+                  ><span class="stars-count">1</span></span
+                >
+              </span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section
+        id="contact"
+        aria-labelledby="contact-title"
+      >
+        <h2
+          id="contact-title"
+          class="eyebrow"
+        >
+          Contact
+        </h2>
+        <p>
+          <a href="mailto:hello&#64;strongwind.dev">
+            <svg
+              class="ico"
+              aria-hidden="true"
+            >
+              <use href="#i-mail" />
+            </svg>
+            hello&#64;strongwind.dev
+          </a>
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-row">
+          <span>&copy; <span id="year">2026</span> StrongWind</span>
+          <ul class="footer-links">
+            <li>
+              <a
+                href="https://github.com/StrongWind1"
+                rel="noopener"
+                >GitHub</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script
+      src="/assets/app.js"
+      defer
+    ></script>
+    <script
+      data-goatcounter="https://strongwind.goatcounter.com/count"
+      src="https://gc.zgo.at/count.v5.js"
+      integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ"
+      crossorigin="anonymous"
+      async
+    ></script>
+  </body>
+</html>
