@@ -136,7 +136,7 @@ function main() {
   const section = build(repos);
   const page = fs.readFileSync(PAGE, "utf8");
   const next = page.replace(
-    / {6}<section id="tools"[\s\S]*?\n {6}<\/section>\n/,
+    / {6}<section[^>]*id="tools"[^>]*>[\s\S]*?\n {6}<\/section>\n/,
     section,
   );
   if (next === page) {
