@@ -89,6 +89,19 @@
   // misreports their language (JavaScript/Makefile), so force a Reference badge.
   var REFERENCE = { Kerberos: 1, WiFi_Cracking: 1 };
 
+  // Published package registry URLs, keyed by repo name.
+  var PACKAGES = {
+    "AD-SecretGen": "https://pypi.org/project/ad-secretgen/",
+    CredWolf: "https://pypi.org/project/credwolf/",
+    KerbWolf: "https://pypi.org/project/kerbwolf/",
+    NTDSWolf: "https://pypi.org/project/ntdswolf/",
+    PassWolf: "https://pypi.org/project/passwolf/",
+    ntcompress: "https://pypi.org/project/ntcompress/",
+    tpwalk: "https://pypi.org/project/tpwalk/",
+    WPAWolf: "https://crates.io/crates/wpawolf",
+    WEPWolf: "https://crates.io/crates/wepwolf",
+  };
+
   // Sections are derived from repo topics, rendered top to bottom. A repo joins
   // the first section whose test matches; anything unmatched falls to Network.
   var SECTIONS = [
@@ -182,6 +195,15 @@
 
     var links = document.createElement("span");
     links.className = "item-links";
+    // Package registry link when the repo has a published package.
+    var pkgUrl = PACKAGES[repo.name];
+    if (pkgUrl) {
+      var pkg = document.createElement("a");
+      pkg.href = pkgUrl;
+      pkg.rel = "noopener";
+      pkg.textContent = pkgUrl.indexOf("crates.io") !== -1 ? "Crate" : "PyPI";
+      links.append(pkg);
+    }
     // Docs link only when the repo advertises a homepage (its published site).
     if (typeof repo.homepage === "string" && repo.homepage) {
       var docs = document.createElement("a");

@@ -21,6 +21,19 @@ const PAGE = path.join(ROOT, "index.html");
 // their language (JavaScript/Makefile), so force a Reference badge.
 const REFERENCE = { Kerberos: 1, WiFi_Cracking: 1 };
 
+// Published package registry URLs, keyed by repo name.
+const PACKAGES = {
+  "AD-SecretGen": "https://pypi.org/project/ad-secretgen/",
+  CredWolf: "https://pypi.org/project/credwolf/",
+  KerbWolf: "https://pypi.org/project/kerbwolf/",
+  NTDSWolf: "https://pypi.org/project/ntdswolf/",
+  PassWolf: "https://pypi.org/project/passwolf/",
+  ntcompress: "https://pypi.org/project/ntcompress/",
+  tpwalk: "https://pypi.org/project/tpwalk/",
+  WPAWolf: "https://crates.io/crates/wpawolf",
+  WEPWolf: "https://crates.io/crates/wepwolf",
+};
+
 // Sections are derived from repo topics, rendered top to bottom; the first
 // matching section wins and anything unmatched falls to the catch-all.
 const SECTIONS = [
@@ -79,6 +92,10 @@ function cardHtml(repo) {
       : "No description provided.";
   const stars =
     typeof repo.stargazers_count === "number" ? repo.stargazers_count : 0;
+  const pkg = PACKAGES[repo.name];
+  const pkgLink = pkg
+    ? `\n                <a href="${esc(pkg)}" rel="noopener">${pkg.indexOf("crates.io") !== -1 ? "Crate" : "PyPI"}</a>`
+    : "";
   const docs =
     typeof repo.homepage === "string" && repo.homepage
       ? `\n                <a href="${esc(repo.homepage)}" rel="noopener">Docs</a>`
@@ -93,7 +110,7 @@ function cardHtml(repo) {
     `                </div>`,
     `                <p class="item-desc">${esc(desc)}</p>`,
     `              </div>`,
-    `              <span class="item-links">${docs}`,
+    `              <span class="item-links">${pkgLink}${docs}`,
     `                <span class="stars" title="GitHub stars"><svg class="ico" aria-hidden="true"><use href="#i-star"></use></svg><span class="stars-count">${stars}</span></span>`,
     `              </span>`,
     `            </li>`,
