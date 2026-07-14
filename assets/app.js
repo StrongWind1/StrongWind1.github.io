@@ -92,14 +92,14 @@
   // Published package registry URLs, keyed by repo name.
   var PACKAGES = {
     "AD-SecretGen": "https://pypi.org/project/ad-secretgen/",
-    CredWolf: "https://pypi.org/project/credwolf/",
-    KerbWolf: "https://pypi.org/project/kerbwolf/",
-    NTDSWolf: "https://pypi.org/project/ntdswolf/",
-    PassWolf: "https://pypi.org/project/passwolf/",
-    ntcompress: "https://pypi.org/project/ntcompress/",
-    tpwalk: "https://pypi.org/project/tpwalk/",
-    WPAWolf: "https://crates.io/crates/wpawolf",
-    WEPWolf: "https://crates.io/crates/wepwolf",
+    "CredWolf": "https://pypi.org/project/credwolf/",
+    "KerbWolf": "https://pypi.org/project/kerbwolf/",
+    "NTDSWolf": "https://pypi.org/project/ntdswolf/",
+    "PassWolf": "https://pypi.org/project/passwolf/",
+    "ntcompress": "https://pypi.org/project/ntcompress/",
+    "tpwalk": "https://pypi.org/project/tpwalk/",
+    "WPAWolf": "https://crates.io/crates/wpawolf",
+    "WEPWolf": "https://crates.io/crates/wepwolf",
   };
 
   // Sections are derived from repo topics, rendered top to bottom. A repo joins
