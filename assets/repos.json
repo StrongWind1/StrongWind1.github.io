@@ -25,7 +25,7 @@
     "html_url": "https://github.com/StrongWind1/CredWolf",
     "language": "Python",
     "name": "CredWolf",
-    "stargazers_count": 13,
+    "stargazers_count": 14,
     "topics": [
       "active-directory",
       "credential-validation",
@@ -85,7 +85,7 @@
     "html_url": "https://github.com/StrongWind1/NFSWolf",
     "language": "Rust",
     "name": "NFSWolf",
-    "stargazers_count": 3,
+    "stargazers_count": 4,
     "topics": [
       "exploitation",
       "nfs",
