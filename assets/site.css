@@ -48,13 +48,11 @@
   --pico-background-color: #fff;
   --pico-color: #1b2433;
 
-  /* Foreground for icon buttons; Pico hijacks --pico-color to its inverse on
-     <button>, so icons need a token it does not touch. */
   --fg: #1b2433;
-  --pico-muted-color: #55617a;
+  --pico-muted-color: #475569;
   --pico-card-background-color: #fff;
-  --pico-card-sectioning-background-color: #f4f6fb;
-  --pico-muted-border-color: #e3e8f0;
+  --pico-card-sectioning-background-color: #edf0f7;
+  --pico-muted-border-color: #c5cede;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -70,10 +68,10 @@
     --pico-background-color: #0f1626;
     --pico-color: #e6eaf3;
     --fg: #e6eaf3;
-    --pico-muted-color: #98a4bb;
-    --pico-card-background-color: #172033;
-    --pico-card-sectioning-background-color: #131a29;
-    --pico-muted-border-color: #27314a;
+    --pico-muted-color: #a8b5ce;
+    --pico-card-background-color: #1a253c;
+    --pico-card-sectioning-background-color: #1e2a42;
+    --pico-muted-border-color: #384b6a;
   }
 }
 
@@ -89,10 +87,10 @@
   --pico-background-color: #0f1626;
   --pico-color: #e6eaf3;
   --fg: #e6eaf3;
-  --pico-muted-color: #98a4bb;
-  --pico-card-background-color: #172033;
-  --pico-card-sectioning-background-color: #131a29;
-  --pico-muted-border-color: #27314a;
+  --pico-muted-color: #a8b5ce;
+  --pico-card-background-color: #1a253c;
+  --pico-card-sectioning-background-color: #1e2a42;
+  --pico-muted-border-color: #384b6a;
 }
 
 /* --- Base ---------------------------------------------------------------- */
