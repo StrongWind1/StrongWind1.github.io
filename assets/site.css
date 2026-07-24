@@ -66,9 +66,9 @@
     --pico-primary-inverse: #fff;
     --pico-primary-underline: rgb(96 165 250 / 40%);
     --pico-background-color: #111215;
-    --pico-color: #e5e7eb;
-    --fg: #e5e7eb;
-    --pico-muted-color: #9ca3af;
+    --pico-color: #f3f4f6;
+    --fg: #f3f4f6;
+    --pico-muted-color: #b0b7c3;
     --pico-card-background-color: #1a1c21;
     --pico-card-sectioning-background-color: #22252b;
     --pico-muted-border-color: #374151;
@@ -85,9 +85,9 @@
   --pico-primary-inverse: #fff;
   --pico-primary-underline: rgb(96 165 250 / 40%);
   --pico-background-color: #111215;
-  --pico-color: #e5e7eb;
-  --fg: #e5e7eb;
-  --pico-muted-color: #9ca3af;
+  --pico-color: #f3f4f6;
+  --fg: #f3f4f6;
+  --pico-muted-color: #b0b7c3;
   --pico-card-background-color: #1a1c21;
   --pico-card-sectioning-background-color: #22252b;
   --pico-muted-border-color: #374151;
