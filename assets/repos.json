@@ -228,6 +228,22 @@
     ]
   },
   {
+    "description": "Browse and analyze product data from any Shopify store",
+    "homepage": null,
+    "html_url": "https://github.com/StrongWind1/shopify-viewer",
+    "language": "Svelte",
+    "name": "shopify-viewer",
+    "stargazers_count": 0,
+    "topics": [
+      "cloudflare-workers",
+      "product-viewer",
+      "shopify",
+      "svelte",
+      "tailwindcss",
+      "typescript"
+    ]
+  },
+  {
     "description": "TP-Link GPL source and firmware URL scraper, verifier, and downloader",
     "homepage": "https://strongwind.dev/tpwalk/",
     "html_url": "https://github.com/StrongWind1/tpwalk",
