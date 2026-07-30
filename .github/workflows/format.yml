@@ -2,7 +2,7 @@ name: format
 
 # Prettier is the formatter/linter of record for this repo. This gate fails any
 # push or PR whose tracked files are not formatted to .prettierrc.json.
-on:
+"on":
   push:
     branches: [main]
   pull_request:
@@ -42,3 +42,23 @@ jobs:
         run: |
           set -euo pipefail
           npm run format:check
+
+  yamllint:
+    name: YAML lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Lint YAML
+        run: |
+          set -euo pipefail
+          # Prettier has no YAML-workflow opinions worth trusting here; yamllint
+          # is the gate the sibling repos use, with the same shared config.
+          python3 -m pip install --user --quiet yamllint
+          python3 -m yamllint --strict -c .yamllint.yml .

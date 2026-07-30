@@ -3,10 +3,10 @@ name: refresh-repos-cache
 # Keep assets/repos.json (the API fallback the site uses when the live GitHub
 # API is unreachable) and the static #tools snapshot in index.html in step with
 # reality. Runs weekly and commits only on a real diff.
-on:
+"on":
   schedule:
     # Mondays 06:17 UTC - off the top of the hour to dodge scheduler congestion.
-    - cron: "17 6 * * 1"
+    - cron: 17 6 * * 1
   workflow_dispatch:
 
 # Deny by default at the top level; grant the minimum on the one job that needs it.
@@ -28,6 +28,9 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+          # gen-sitemap.js dates the landing page from the last commit that
+          # touched index.html, which a shallow clone cannot see.
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
@@ -54,25 +57,28 @@ jobs:
               | {name, description, language, stargazers_count, html_url, homepage, topics}
             ] | sort_by(.name)' > assets/repos.json
 
-      - name: Rebuild the static fallback and normalise formatting
+      - name: Rebuild the static fallback and the sitemap index
         run: |
           set -euo pipefail
-          # Regenerates the #tools snapshot in index.html from repos.json, then
-          # runs Prettier over both so the committed files stay canonical.
-          npm run build:fallback
+          # Regenerates the #tools snapshot in index.html from repos.json and runs
+          # Prettier over both, then rebuilds sitemap.xml as an index over the
+          # project docs sites listed in repos.json. The sitemap step fetches each
+          # child sitemap to confirm it is live before listing it.
+          npm run build
 
       - name: Commit the refresh as a signed commit if anything changed
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          if git diff --quiet -- assets/repos.json index.html; then
+          tracked=(assets/repos.json index.html sitemap.xml sitemap-pages.xml)
+          if git diff --quiet -- "${tracked[@]}"; then
             echo "Snapshot unchanged; nothing to commit."
             exit 0
           fi
           # Base64-encode the tracked files that actually changed this run.
           additions='[]'
-          for f in assets/repos.json index.html; do
+          for f in "${tracked[@]}"; do
             if ! git diff --quiet -- "$f"; then
               additions=$(jq --arg p "$f" --arg c "$(base64 -w0 "$f")" \
                 '. + [{path: $p, contents: $c}]' <<< "$additions")

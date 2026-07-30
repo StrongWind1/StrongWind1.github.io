@@ -6,7 +6,9 @@
   "scripts": {
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "build:fallback": "node scripts/gen-static.js && prettier --write index.html assets/repos.json"
+    "build:fallback": "node scripts/gen-static.js && prettier --write index.html assets/repos.json",
+    "build:sitemap": "node scripts/gen-sitemap.js",
+    "build": "npm run build:fallback && npm run build:sitemap"
   },
   "devDependencies": {
     "prettier": "3.9.4"

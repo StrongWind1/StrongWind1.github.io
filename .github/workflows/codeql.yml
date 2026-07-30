@@ -2,7 +2,7 @@ name: CodeQL
 
 # GitHub CodeQL static analysis -- JavaScript/TypeScript and GitHub Actions workflow files.
 
-run-name: "CodeQL -- ${{ github.event.head_commit.message || github.ref_name }}"
+run-name: CodeQL -- ${{ github.event.head_commit.message || github.ref_name }}
 
 "on":
   push:
@@ -10,7 +10,7 @@ run-name: "CodeQL -- ${{ github.event.head_commit.message || github.ref_name }}"
   pull_request:
     branches: [main]
   schedule:
-    - cron: "19 6 * * 6"
+    - cron: 19 6 * * 6
   workflow_dispatch:
 
 concurrency:
