@@ -1,0 +1,153 @@
+/* Styles for /add, the page the business-card QR points at.
+ *
+ * Page-local rather than folded into assets/site.css for two reasons: /add stays
+ * one directory that deploys with a single copy, and the site's own stylesheet
+ * does not inherit a layout it never uses. It is served from the same origin, so
+ * the existing `style-src 'self'` policy covers it with no CSP exception.
+ *
+ * Everything below reads Pico's custom properties rather than hard-coding
+ * colour, so light and dark follow the site automatically and this file never
+ * has to know which one is active.
+ *
+ * Mobile is the only case that matters here - this page is reached by scanning a
+ * business card, so the reader is holding a phone. Desktop just gets the same
+ * column, capped and centred.
+ */
+
+.addwrap {
+  max-width: 30rem;
+  margin-inline: auto;
+}
+
+/* --- Identity ---------------------------------------------------------- */
+
+.addhead {
+  margin-block: clamp(1.5rem, 6vw, 2.5rem) 1.75rem;
+  text-align: center;
+}
+
+.addhead img {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  border: 2px solid var(--pico-muted-border-color);
+}
+
+.addhead h1 {
+  margin: 0.8rem 0 0;
+  font-size: clamp(1.4rem, 6vw, 1.75rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.addbio {
+  margin: 0.5rem 0 0;
+  font-size: 0.95rem;
+  color: var(--pico-muted-color);
+  text-wrap: pretty;
+}
+
+/* --- Link rows -------------------------------------------------------- */
+
+.addstack {
+  display: grid;
+  gap: 0.6rem;
+  padding: 0;
+  margin: 0 0 2rem;
+  list-style: none;
+}
+
+/* Pico sets `list-style-type: square` on `li` itself, which beats a `list-style`
+ * declared on the parent `ul` - so the markers have to be cleared on the item,
+ * not the list. Without this a column of square bullets appears outside every
+ * row, which is invisible in the markup and obvious the moment it renders. */
+.addstack > li {
+  list-style: none;
+}
+
+/* One row per link. 3rem floor because a link reached from a phone needs a
+ * target a thumb can hit without aiming - comfortably over the 44px minimum
+ * both platforms' guidelines ask for. */
+.addlink {
+  display: flex;
+  gap: 0.85rem;
+  align-items: center;
+  min-height: 3rem;
+  padding: 0.7rem 0.9rem;
+  font-weight: 600;
+
+  /* `inherit`, not `var(--pico-color)`: Pico redefines that property on `a` to
+   * the primary blue, so reading it here would paint every label as a link
+   * rather than as the label of a button. The card's border and fill are the
+   * affordance; the text should be body colour. */
+  color: inherit;
+  text-decoration: none;
+  background: var(--pico-card-background-color);
+  border: 1px solid var(--pico-muted-border-color);
+  border-radius: 0.65rem;
+}
+
+.addlink:hover,
+.addlink:focus-visible {
+  border-color: var(--pico-primary);
+}
+
+/* The one action the page exists to drive. */
+.addlink-primary {
+  color: var(--pico-primary-inverse);
+  background: var(--pico-primary-background);
+  border-color: var(--pico-primary-background);
+}
+
+.addlink-primary:hover,
+.addlink-primary:focus-visible {
+  border-color: var(--pico-primary-hover-background);
+}
+
+.addlink .ico {
+  flex: none;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.addlink-text {
+  display: block;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* Wraps rather than ellipsing: a URL the reader may want to type is worth two
+ * lines, and truncating the middle of a repo name defeats the point. */
+.addlink-sub {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--pico-muted-color);
+  overflow-wrap: anywhere;
+}
+
+.addlink-primary .addlink-sub {
+  color: inherit;
+  opacity: 0.85;
+}
+
+/* --- Sections --------------------------------------------------------- */
+
+.addsection {
+  margin-bottom: 2rem;
+}
+
+.addsection > h2 {
+  margin-bottom: 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pico-muted-color);
+}
+
+.addnote {
+  margin: -1.25rem 0 2rem;
+  font-size: 0.8rem;
+  color: var(--pico-muted-color);
+}

@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+    <title>StrongWind - links, contact, tools</title>
+    <meta
+      name="description"
+      content="Follow StrongWind on GitHub, browse the Wolf security toolchain, and get in touch."
+    />
+    <link
+      rel="canonical"
+      href="https://strongwind.dev/add"
+    />
+
+    <meta
+      name="color-scheme"
+      content="light dark"
+    />
+    <meta
+      name="referrer"
+      content="no-referrer"
+    />
+    <meta
+      name="robots"
+      content="noindex"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="#ffffff"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#111215"
+    />
+
+    <!-- Deny by default, then allow only the three things this page actually
+         loads. No inline styles or scripts, so `style-src 'self'` needs no hash
+         exception; add.css lives in this directory so /add deploys as one
+         self-contained copy.
+         Every directive is tight for a reason, not by habit:
+           base-uri 'none'      there is no <base> element and never should be
+           manifest-src 'none'  nothing is linked; 'self' would permit one
+           script-src 'none'    the page is static; there is nothing to execute
+           font-src 'self'      load-bearing - site.css has one @font-face
+           img-src 'self'       load-bearing - the avatar
+         frame-ancestors is deliberately absent: it is ignored in a meta CSP, so
+         including it would only imply protection the page does not have. On
+         GitHub Pages, framing can only be refused by a header we cannot set.
+         vnu reports the stylesheets and the avatar as blocked when checking a
+         local file, because a root-relative path has no origin to resolve
+         against; adding the explicit origin does not silence it. Verified
+         against the live homepage, which ships the same warnings and exits 0. -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'; img-src 'self'; style-src 'self'; script-src 'none'; font-src 'self'; manifest-src 'none'"
+    />
+
+    <link
+      rel="icon"
+      href="/favicon.svg"
+      type="image/svg+xml"
+    />
+    <link
+      rel="stylesheet"
+      href="/assets/pico.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/assets/site.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/add/add.css"
+    />
+  </head>
+  <body>
+    <a
+      class="skip"
+      href="#main"
+      >Skip to content</a
+    >
+
+    <!-- Icons are copied rather than referenced: an external SVG sprite cannot
+         be resolved by <use> under default-src 'none', and this page is reached
+         cold from a QR scan, so a second request for a handful of glyphs is not
+         worth the round trip. i-github and i-mail match assets on the homepage;
+         the rest are local to this page. -->
+    <svg
+      class="sprite"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <symbol
+        id="i-github"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill="currentColor"
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+        />
+      </symbol>
+      <symbol
+        id="i-mail"
+        viewBox="0 0 24 24"
+      >
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z M22 6l-10 7L2 6"
+        />
+      </symbol>
+      <symbol
+        id="i-mastodon"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill="currentColor"
+          d="M11.19 12.2c1.82-.22 3.4-1.34 3.6-2.37.31-1.62.29-3.95.29-3.95 0-3.16-2.07-4.08-2.07-4.08C11.96 1.32 10.16 1.02 8.3 1h-.05c-1.87.02-3.66.32-4.71.8 0 0-2.07.92-2.07 4.08l-.01.9c0 .93.02 1.96.17 3 .21 1.5 1.44 2.53 2.89 2.72.83.11 1.65.2 2.5.16 1.4-.08 2.6-.4 2.6-.4l-.05 1.03c-.2.24-.51.45-1.02.53-1.2.2-2.3.06-2.98-.06-.24-.05-.4.05-.4.28l.02.5c.03.2.2.32.4.36 1.4.35 2.9.48 4.4.16 1.2-.26 2.2-1.1 2.4-2.4.05-.4.05-.8.05-.9zM12.6 9.4h-1.5V5.9c0-.75-.31-1.13-.94-1.13-.7 0-1.05.45-1.05 1.34v1.94H7.7V6.1c0-.89-.35-1.34-1.05-1.34-.63 0-.94.38-.94 1.13v3.5H4.2V5.79c0-.74.19-1.33.57-1.77.39-.44.9-.67 1.53-.67.73 0 1.29.28 1.66.85L8 4.83l.04-.63c.37-.57.93-.85 1.66-.85.63 0 1.14.23 1.53.67.38.44.57 1.03.57 1.77z"
+        />
+      </symbol>
+      <symbol
+        id="i-globe"
+        viewBox="0 0 24 24"
+      >
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z M2 12h20 M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"
+        />
+      </symbol>
+      <symbol
+        id="i-x"
+        viewBox="0 0 24 24"
+      >
+        <path
+          fill="currentColor"
+          d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"
+        />
+      </symbol>
+      <symbol
+        id="i-discord"
+        viewBox="0 0 24 24"
+      >
+        <path
+          fill="currentColor"
+          d="M20.317 4.3698a19.7913 19.7913 0 0 0-4.8851-1.5152.0741.0741 0 0 0-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 0 0-.0785-.037 19.7363 19.7363 0 0 0-4.8852 1.515.0699.0699 0 0 0-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 0 0 .0312.0561c1.8933 1.3899 3.7277 2.2321 5.5346 2.7909a.0777.0777 0 0 0 .0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 0 0-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 0 1-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 0 1 .0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 0 1 .0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 0 1-.0066.1276 12.2986 12.2986 0 0 1-1.873.8914.0766.0766 0 0 0-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 0 0 .0842.0286c1.8158-.5588 3.6502-1.401 5.5435-2.7909a.077.077 0 0 0 .0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 0 0-.0312-.0286ZM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189Zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"
+        />
+      </symbol>
+      <symbol
+        id="i-package"
+        viewBox="0 0 24 24"
+      >
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M21 8v8l-9 5-9-5V8l9-5z M3 8l9 5 9-5 M12 13v8"
+        />
+      </symbol>
+    </svg>
+
+    <main
+      id="main"
+      class="container addwrap"
+    >
+      <header class="addhead">
+        <img
+          src="/add/strongwind.webp"
+          alt=""
+          width="112"
+          height="112"
+        />
+        <h1>StrongWind</h1>
+        <p class="addbio">
+          Offensive security researcher &mdash; Windows, Active Directory,
+          Wi-Fi.
+        </p>
+      </header>
+
+      <ul class="addstack">
+        <li>
+          <a
+            class="addlink addlink-primary"
+            href="https://github.com/StrongWind1"
+            rel="me noopener"
+          >
+            <svg
+              class="ico"
+              aria-hidden="true"
+            >
+              <use href="#i-github" />
+            </svg>
+            <span class="addlink-text">
+              Follow me on GitHub
+              <span class="addlink-sub">github.com/StrongWind1</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="addlink"
+            href="/"
+          >
+            <svg
+              class="ico"
+              aria-hidden="true"
+            >
+              <use href="#i-globe" />
+            </svg>
+            <span class="addlink-text">
+              strongwind.dev
+              <span class="addlink-sub">Every tool, with source</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="addlink"
+            href="mailto:hello&#64;strongwind.dev"
+          >
+            <svg
+              class="ico"
+              aria-hidden="true"
+            >
+              <use href="#i-mail" />
+            </svg>
+            <span class="addlink-text">
+              Email me
+              <span class="addlink-sub">hello&#64;strongwind.dev</span>
+            </span>
+          </a>
+        </li>
+      </ul>
+
+      <section
+        class="addsection"
+        aria-labelledby="social-title"
+      >
+        <h2 id="social-title">Find me elsewhere</h2>
+        <ul class="addstack">
+          <li>
+            <a
+              class="addlink"
+              href="https://x.com/Strong1Wind"
+              rel="me noopener"
+            >
+              <svg
+                class="ico"
+                aria-hidden="true"
+              >
+                <use href="#i-x" />
+              </svg>
+              <span class="addlink-text">
+                X
+                <span class="addlink-sub">@Strong1Wind</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="addlink"
+              href="https://infosec.exchange/@StrongWind"
+              rel="me noopener"
+            >
+              <svg
+                class="ico"
+                aria-hidden="true"
+              >
+                <use href="#i-mastodon" />
+              </svg>
+              <span class="addlink-text">
+                Mastodon
+                <span class="addlink-sub">@StrongWind@infosec.exchange</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="addlink"
+              href="https://discord.com/users/215608228271226892"
+              rel="me noopener"
+            >
+              <svg
+                class="ico"
+                aria-hidden="true"
+              >
+                <use href="#i-discord" />
+              </svg>
+              <span class="addlink-text">
+                Discord
+                <span class="addlink-sub">StrongWind</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section
+        class="addsection"
+        aria-labelledby="pkg-title"
+      >
+        <h2 id="pkg-title">Install from a registry</h2>
+        <ul class="addstack">
+          <li>
+            <a
+              class="addlink"
+              href="https://pypi.org/user/StrongWind/"
+              rel="noopener"
+            >
+              <svg
+                class="ico"
+                aria-hidden="true"
+              >
+                <use href="#i-package" />
+              </svg>
+              <span class="addlink-text">
+                PyPI
+                <span class="addlink-sub"
+                  >uv tool install &mdash; seven packages</span
+                >
+              </span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="addlink"
+              href="https://crates.io/users/StrongWind1"
+              rel="noopener"
+            >
+              <svg
+                class="ico"
+                aria-hidden="true"
+              >
+                <use href="#i-package" />
+              </svg>
+              <span class="addlink-text">
+                crates.io
+                <span class="addlink-sub"
+                  >cargo install &mdash; Rust crates</span
+                >
+              </span>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>
