@@ -66,7 +66,7 @@
     "html_url": "https://github.com/StrongWind1/Kerberos",
     "language": "JavaScript",
     "name": "Kerberos",
-    "stargazers_count": 7,
+    "stargazers_count": 8,
     "topics": [
       "active-directory",
       "authentication",
@@ -161,7 +161,7 @@
   },
   {
     "description": "Pure-Rust WPA / WPA2 / WPA3 PSK handshake extractor for hashcat modes 22000 + 37100. Never misses a hash.",
-    "homepage": "https://strongwind.dev/WiFi_Cracking/",
+    "homepage": "",
     "html_url": "https://github.com/StrongWind1/WPAWolf",
     "language": "Rust",
     "name": "WPAWolf",
