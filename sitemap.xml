@@ -2,7 +2,7 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
     <loc>https://strongwind.dev/sitemap-pages.xml</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-31</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://strongwind.dev/AD-SecretGen/sitemap.xml</loc>
@@ -35,6 +35,10 @@
   <sitemap>
     <loc>https://strongwind.dev/WiFi_Cracking/sitemap.xml</loc>
     <lastmod>2026-08-23</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://strongwind.dev/exitfleet/sitemap.xml</loc>
+    <lastmod>2026-08-31</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://strongwind.dev/ntcompress/sitemap.xml</loc>

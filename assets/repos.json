@@ -205,6 +205,25 @@
     ]
   },
   {
+    "description": "Distributed exit-node network for rotating source IPs during authorized penetration testing. Kernel-native WireGuard + IPIP + ECMP over a hardened NixOS fleet.",
+    "homepage": "https://strongwind.dev/exitfleet/",
+    "html_url": "https://github.com/StrongWind1/exitfleet",
+    "language": "Shell",
+    "name": "exitfleet",
+    "stargazers_count": 0,
+    "topics": [
+      "bash",
+      "ecmp",
+      "exit-node",
+      "networking",
+      "nixos",
+      "penetration-testing",
+      "red-team",
+      "security",
+      "wireguard"
+    ]
+  },
+  {
     "description": "Pure-Python ESE record compression and ntdll RtlCompressBuffer/RtlDecompressBuffer formats",
     "homepage": "https://strongwind.dev/ntcompress/",
     "html_url": "https://github.com/StrongWind1/ntcompress",
