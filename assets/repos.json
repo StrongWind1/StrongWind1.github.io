@@ -47,7 +47,7 @@
     "html_url": "https://github.com/StrongWind1/KerbWolf",
     "language": "Python",
     "name": "KerbWolf",
-    "stargazers_count": 2,
+    "stargazers_count": 3,
     "topics": [
       "active-directory",
       "asreproasting",
@@ -66,7 +66,7 @@
     "html_url": "https://github.com/StrongWind1/Kerberos",
     "language": "JavaScript",
     "name": "Kerberos",
-    "stargazers_count": 8,
+    "stargazers_count": 7,
     "topics": [
       "active-directory",
       "authentication",
@@ -85,7 +85,7 @@
     "html_url": "https://github.com/StrongWind1/NFSWolf",
     "language": "Rust",
     "name": "NFSWolf",
-    "stargazers_count": 4,
+    "stargazers_count": 5,
     "topics": [
       "exploitation",
       "nfs",
@@ -104,7 +104,7 @@
     "html_url": "https://github.com/StrongWind1/NTDSWolf",
     "language": "Python",
     "name": "NTDSWolf",
-    "stargazers_count": 1,
+    "stargazers_count": 2,
     "topics": [
       "active-directory",
       "credential-extraction",
@@ -124,7 +124,7 @@
     "html_url": "https://github.com/StrongWind1/PassWolf",
     "language": "Python",
     "name": "PassWolf",
-    "stargazers_count": 1,
+    "stargazers_count": 2,
     "topics": [
       "active-directory",
       "impacket",
@@ -189,7 +189,7 @@
     "html_url": "https://github.com/StrongWind1/WiFi_Cracking",
     "language": "Makefile",
     "name": "WiFi_Cracking",
-    "stargazers_count": 3,
+    "stargazers_count": 4,
     "topics": [
       "802-11",
       "documentation",
