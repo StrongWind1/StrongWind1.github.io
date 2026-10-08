@@ -1,0 +1,64 @@
+name: format
+
+# Prettier is the formatter/linter of record for this repo. This gate fails any
+# push or PR whose tracked files are not formatted to .prettierrc.json.
+"on":
+  push:
+    branches: [main]
+  pull_request:
+
+# Read-only: this job only checks formatting, it never writes back.
+permissions: {}
+
+concurrency:
+  group: format-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  prettier:
+    name: Prettier check
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install pinned tooling
+        run: |
+          set -euo pipefail
+          npm ci --no-audit --no-fund
+
+      - name: Check formatting with Prettier
+        run: |
+          set -euo pipefail
+          npm run format:check
+
+  yamllint:
+    name: YAML lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Lint YAML
+        run: |
+          set -euo pipefail
+          # Prettier has no YAML-workflow opinions worth trusting here; yamllint
+          # is the gate the sibling repos use, with the same shared config.
+          python3 -m pip install --user --quiet yamllint
+          python3 -m yamllint --strict -c .yamllint.yml .

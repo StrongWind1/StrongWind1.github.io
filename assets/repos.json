@@ -1,0 +1,289 @@
+[
+  {
+    "description": "Derive Active Directory password hashes and Kerberos keys from a cleartext password - the inverse of NTDSWolf.",
+    "homepage": "https://strongwind.dev/AD-SecretGen/",
+    "html_url": "https://github.com/StrongWind1/AD-SecretGen",
+    "language": "Python",
+    "name": "AD-SecretGen",
+    "stargazers_count": 1,
+    "topics": [
+      "active-directory",
+      "kerberos",
+      "ntds",
+      "ntlm",
+      "password-hash",
+      "penetration-testing",
+      "python",
+      "red-team",
+      "security",
+      "strongwind",
+      "wdigest"
+    ]
+  },
+  {
+    "description": "Validate AD credentials over NTLM and Kerberos - passwords, hashes, keys, and tickets",
+    "homepage": "https://strongwind.dev/CredWolf/",
+    "html_url": "https://github.com/StrongWind1/CredWolf",
+    "language": "Python",
+    "name": "CredWolf",
+    "stargazers_count": 15,
+    "topics": [
+      "active-directory",
+      "credential-validation",
+      "impacket",
+      "kerberos",
+      "ntlm",
+      "pass-the-hash",
+      "pass-the-key",
+      "penetration-testing",
+      "python",
+      "red-team",
+      "security",
+      "smb",
+      "strongwind"
+    ]
+  },
+  {
+    "description": "Kerberos roasting and TGT attack toolkit for Active Directory",
+    "homepage": "https://strongwind.dev/KerbWolf/",
+    "html_url": "https://github.com/StrongWind1/KerbWolf",
+    "language": "Python",
+    "name": "KerbWolf",
+    "stargazers_count": 3,
+    "topics": [
+      "active-directory",
+      "asreproasting",
+      "kerberoasting",
+      "kerberos",
+      "penetration-testing",
+      "python",
+      "red-team",
+      "security",
+      "timeroasting"
+    ]
+  },
+  {
+    "description": "Comprehensive reference for Kerberos authentication in Microsoft Active Directory - protocol internals, security configuration, and attack techniques.",
+    "homepage": "https://strongwind.dev/Kerberos/",
+    "html_url": "https://github.com/StrongWind1/Kerberos",
+    "language": "JavaScript",
+    "name": "Kerberos",
+    "stargazers_count": 7,
+    "topics": [
+      "active-directory",
+      "authentication",
+      "documentation",
+      "kerberos",
+      "penetration-testing",
+      "red-team",
+      "reference",
+      "security",
+      "windows"
+    ]
+  },
+  {
+    "description": "Fast native NFS security toolkit - recon, enumeration, exploitation, and interactive shell over NFSv2/v3/v4",
+    "homepage": "https://strongwind.dev/NFSWolf/",
+    "html_url": "https://github.com/StrongWind1/NFSWolf",
+    "language": "Rust",
+    "name": "NFSWolf",
+    "stargazers_count": 6,
+    "topics": [
+      "exploitation",
+      "nfs",
+      "nfsv3",
+      "nfsv4",
+      "penetration-testing",
+      "red-team",
+      "rust",
+      "scanner",
+      "security"
+    ]
+  },
+  {
+    "description": "Offline NTDS.dit parser and credential extractor for Active Directory forensics",
+    "homepage": "https://strongwind.dev/NTDSWolf/",
+    "html_url": "https://github.com/StrongWind1/NTDSWolf",
+    "language": "Python",
+    "name": "NTDSWolf",
+    "stargazers_count": 2,
+    "topics": [
+      "active-directory",
+      "credential-extraction",
+      "dfir",
+      "forensics",
+      "laps",
+      "ntds",
+      "penetration-testing",
+      "python",
+      "red-team",
+      "security"
+    ]
+  },
+  {
+    "description": "Correct, spec-compliant Active Directory password change, reset, and policy read over SAMR, Netlogon, LSA, Kerberos, and LDAP - including the AES paths impacket lacks.",
+    "homepage": "https://strongwind.dev/PassWolf/",
+    "html_url": "https://github.com/StrongWind1/PassWolf",
+    "language": "Python",
+    "name": "PassWolf",
+    "stargazers_count": 2,
+    "topics": [
+      "active-directory",
+      "impacket",
+      "kerberos",
+      "ldap",
+      "netlogon",
+      "password",
+      "penetration-testing",
+      "python",
+      "red-team",
+      "samr",
+      "security"
+    ]
+  },
+  {
+    "description": "Offline, passive WEP key recovery from 802.11 captures",
+    "homepage": "https://strongwind.dev/WEPWolf/",
+    "html_url": "https://github.com/StrongWind1/WEPWolf",
+    "language": "Rust",
+    "name": "WEPWolf",
+    "stargazers_count": 2,
+    "topics": [
+      "802-11",
+      "cracking",
+      "hashcat",
+      "pcap",
+      "rust",
+      "security",
+      "wep",
+      "wifi",
+      "wireless",
+      "wireless-security"
+    ]
+  },
+  {
+    "description": "Pure-Rust WPA / WPA2 / WPA3 PSK handshake extractor for hashcat modes 22000 + 37100. Never misses a hash.",
+    "homepage": "https://strongwind.dev/WPAWolf/",
+    "html_url": "https://github.com/StrongWind1/WPAWolf",
+    "language": "Rust",
+    "name": "WPAWolf",
+    "stargazers_count": 7,
+    "topics": [
+      "802-11",
+      "cracking",
+      "handshake",
+      "hashcat",
+      "pcap",
+      "pcapng",
+      "pmkid",
+      "rust",
+      "wifi",
+      "wifi-security",
+      "wireless",
+      "wpa",
+      "wpa2",
+      "wpa3"
+    ]
+  },
+  {
+    "description": "Complete technical reference for WPA/WPA2/WPA3 PSK security analysis",
+    "homepage": "https://strongwind.dev/WiFi_Cracking/",
+    "html_url": "https://github.com/StrongWind1/WiFi_Cracking",
+    "language": "Makefile",
+    "name": "WiFi_Cracking",
+    "stargazers_count": 4,
+    "topics": [
+      "802-11",
+      "documentation",
+      "handshake",
+      "hashcat",
+      "reference",
+      "security",
+      "wifi",
+      "wireless-security",
+      "wpa",
+      "wpa2",
+      "wpa3"
+    ]
+  },
+  {
+    "description": "Pure-Python ESE record compression and ntdll RtlCompressBuffer/RtlDecompressBuffer formats",
+    "homepage": "https://strongwind.dev/ntcompress/",
+    "html_url": "https://github.com/StrongWind1/ntcompress",
+    "language": "Python",
+    "name": "ntcompress",
+    "stargazers_count": 1,
+    "topics": [
+      "active-directory",
+      "compression",
+      "ese",
+      "esent",
+      "forensics",
+      "lznt1",
+      "ntdll",
+      "python",
+      "security",
+      "windows",
+      "xpress",
+      "xpress10",
+      "xpress9"
+    ]
+  },
+  {
+    "description": "Detect, extract, bypass, and decrypt passwords and protection in Microsoft Office and OpenDocument files",
+    "homepage": "https://strongwind.dev/office-password-toolkit/",
+    "html_url": "https://github.com/StrongWind1/office-password-toolkit",
+    "language": "Python",
+    "name": "office-password-toolkit",
+    "stargazers_count": 1,
+    "topics": [
+      "dfir",
+      "encryption",
+      "forensics",
+      "hashcat",
+      "msoffice",
+      "office",
+      "ole",
+      "ooxml",
+      "password-recovery",
+      "python",
+      "red-team",
+      "security"
+    ]
+  },
+  {
+    "description": "Browse and analyze product data from any Shopify store",
+    "homepage": "https://strongwind.dev/shopify-viewer/",
+    "html_url": "https://github.com/StrongWind1/shopify-viewer",
+    "language": "Svelte",
+    "name": "shopify-viewer",
+    "stargazers_count": 1,
+    "topics": [
+      "cloudflare-workers",
+      "product-viewer",
+      "shopify",
+      "svelte",
+      "tailwindcss",
+      "typescript"
+    ]
+  },
+  {
+    "description": "TP-Link GPL source and firmware URL scraper, verifier, and downloader",
+    "homepage": "https://strongwind.dev/tpwalk/",
+    "html_url": "https://github.com/StrongWind1/tpwalk",
+    "language": "Python",
+    "name": "tpwalk",
+    "stargazers_count": 1,
+    "topics": [
+      "downloader",
+      "firmware",
+      "gpl",
+      "iot",
+      "python",
+      "router",
+      "scraper",
+      "security",
+      "tp-link"
+    ]
+  }
+]
