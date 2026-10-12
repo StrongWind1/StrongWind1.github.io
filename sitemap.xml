@@ -2,46 +2,54 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
     <loc>https://strongwind.dev/sitemap-pages.xml</loc>
-    <lastmod>2026-09-14</lastmod>
+    <lastmod>2026-10-12</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://strongwind.dev/AD-SecretGen/sitemap.xml</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-10-08</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://strongwind.dev/CredWolf/sitemap.xml</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-10-08</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://strongwind.dev/KerbWolf/sitemap.xml</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-10-08</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://strongwind.dev/Kerberos/sitemap.xml</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-08</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://strongwind.dev/NFSWolf/sitemap.xml</loc>
+    <lastmod>2026-10-08</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://strongwind.dev/NTDSWolf/sitemap.xml</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-10-08</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://strongwind.dev/PassWolf/sitemap.xml</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-10-08</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://strongwind.dev/WEPWolf/sitemap.xml</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-10-08</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://strongwind.dev/WiFi_Cracking/sitemap.xml</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-10-08</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://strongwind.dev/ntcompress/sitemap.xml</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-10-08</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://strongwind.dev/office-password-toolkit/sitemap.xml</loc>
+    <lastmod>2026-10-08</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://strongwind.dev/tpwalk/sitemap.xml</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-10-08</lastmod>
   </sitemap>
 </sitemapindex>

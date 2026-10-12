@@ -26,7 +26,7 @@
     "html_url": "https://github.com/StrongWind1/CredWolf",
     "language": "Python",
     "name": "CredWolf",
-    "stargazers_count": 15,
+    "stargazers_count": 16,
     "topics": [
       "active-directory",
       "credential-validation",
@@ -106,7 +106,7 @@
     "html_url": "https://github.com/StrongWind1/NTDSWolf",
     "language": "Python",
     "name": "NTDSWolf",
-    "stargazers_count": 2,
+    "stargazers_count": 3,
     "topics": [
       "active-directory",
       "credential-extraction",
@@ -147,7 +147,7 @@
     "html_url": "https://github.com/StrongWind1/WEPWolf",
     "language": "Rust",
     "name": "WEPWolf",
-    "stargazers_count": 2,
+    "stargazers_count": 3,
     "topics": [
       "802-11",
       "cracking",
@@ -167,7 +167,7 @@
     "html_url": "https://github.com/StrongWind1/WPAWolf",
     "language": "Rust",
     "name": "WPAWolf",
-    "stargazers_count": 7,
+    "stargazers_count": 8,
     "topics": [
       "802-11",
       "cracking",
@@ -191,7 +191,7 @@
     "html_url": "https://github.com/StrongWind1/WiFi_Cracking",
     "language": "Makefile",
     "name": "WiFi_Cracking",
-    "stargazers_count": 4,
+    "stargazers_count": 5,
     "topics": [
       "802-11",
       "documentation",
