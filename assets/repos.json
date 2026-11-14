@@ -1,6 +1,6 @@
 [
   {
-    "description": "Derive Active Directory password hashes and Kerberos keys from a cleartext password - the inverse of NTDSWolf.",
+    "description": "Derive Active Directory password hashes and Kerberos keys from a cleartext password - the inverse of NTDSWolf",
     "homepage": "https://strongwind.dev/AD-SecretGen/",
     "html_url": "https://github.com/StrongWind1/AD-SecretGen",
     "language": "Python",
@@ -16,8 +16,28 @@
       "python",
       "red-team",
       "security",
-      "strongwind",
       "wdigest"
+    ]
+  },
+  {
+    "description": "Pure-Rust encrypted archive toolkit: triage, strip pseudo-encryption, run known-plaintext attacks, and emit optimal hashes for ZIP, RAR, and 7-Zip",
+    "homepage": "",
+    "html_url": "https://github.com/StrongWind1/ArchiveWolf",
+    "language": "Rust",
+    "name": "ArchiveWolf",
+    "stargazers_count": 0,
+    "topics": [
+      "7zip",
+      "archive",
+      "encryption",
+      "hashcat",
+      "known-plaintext-attack",
+      "password-recovery",
+      "penetration-testing",
+      "rar",
+      "rust",
+      "security",
+      "zip"
     ]
   },
   {
@@ -39,18 +59,31 @@
       "python",
       "red-team",
       "security",
-      "smb",
-      "strongwind"
+      "smb"
     ]
   },
   {
     "description": "Pure-Rust IKE/IPsec security scanner: discovery, transform enumeration, vendor fingerprinting, and Aggressive Mode PSK hash extraction",
-    "homepage": "https://strongwind.dev/IKEWolf/",
+    "homepage": "",
     "html_url": "https://github.com/StrongWind1/IKEWolf",
     "language": "Rust",
     "name": "IKEWolf",
     "stargazers_count": 1,
-    "topics": []
+    "topics": [
+      "hashcat",
+      "ike",
+      "ikev1",
+      "ikev2",
+      "ipsec",
+      "isakmp",
+      "penetration-testing",
+      "psk",
+      "red-team",
+      "rust",
+      "scanner",
+      "security",
+      "vpn"
+    ]
   },
   {
     "description": "Kerberos roasting and TGT attack toolkit for Active Directory",
@@ -72,7 +105,7 @@
     ]
   },
   {
-    "description": "Comprehensive reference for Kerberos authentication in Microsoft Active Directory - protocol internals, security configuration, and attack techniques.",
+    "description": "Comprehensive reference for Kerberos authentication in Microsoft Active Directory - protocol internals, security configuration, and attack techniques",
     "homepage": "https://strongwind.dev/Kerberos/",
     "html_url": "https://github.com/StrongWind1/Kerberos",
     "language": "JavaScript",
@@ -130,7 +163,7 @@
     ]
   },
   {
-    "description": "Correct, spec-compliant Active Directory password change, reset, and policy read over SAMR, Netlogon, LSA, Kerberos, and LDAP - including the AES paths impacket lacks.",
+    "description": "Correct, spec-compliant Active Directory password change, reset, and policy read over SAMR, Netlogon, LSA, Kerberos, and LDAP - including the AES paths impacket lacks",
     "homepage": "https://strongwind.dev/PassWolf/",
     "html_url": "https://github.com/StrongWind1/PassWolf",
     "language": "Python",
@@ -171,8 +204,8 @@
     ]
   },
   {
-    "description": "Pure-Rust WPA / WPA2 / WPA3 PSK handshake extractor for hashcat modes 22000 + 37100. Never misses a hash.",
-    "homepage": "https://strongwind.dev/WPAWolf/",
+    "description": "Pure-Rust WPA / WPA2 / WPA3 PSK handshake and PMKID extractor for hashcat mode 22000",
+    "homepage": "",
     "html_url": "https://github.com/StrongWind1/WPAWolf",
     "language": "Rust",
     "name": "WPAWolf",
@@ -186,6 +219,7 @@
       "pcapng",
       "pmkid",
       "rust",
+      "security",
       "wifi",
       "wifi-security",
       "wireless",
@@ -282,7 +316,7 @@
     "html_url": "https://github.com/StrongWind1/tpwalk",
     "language": "Python",
     "name": "tpwalk",
-    "stargazers_count": 1,
+    "stargazers_count": 2,
     "topics": [
       "downloader",
       "firmware",
