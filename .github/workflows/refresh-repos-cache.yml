@@ -23,6 +23,7 @@ jobs:
     timeout-minutes: 5
     permissions:
       contents: write # commit the refreshed snapshot back to main
+      actions: write # dispatch pages.yml after a refresh commit
     steps:
       - name: Check out repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -67,6 +68,7 @@ jobs:
           npm run build
 
       - name: Commit the refresh as a signed commit if anything changed
+        id: commit
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -74,8 +76,10 @@ jobs:
           tracked=(assets/repos.json index.html sitemap.xml sitemap-pages.xml)
           if git diff --quiet -- "${tracked[@]}"; then
             echo "Snapshot unchanged; nothing to commit."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
+          echo "changed=true" >> "$GITHUB_OUTPUT"
           # Base64-encode the tracked files that actually changed this run.
           additions='[]'
           for f in "${tracked[@]}"; do
@@ -107,3 +111,13 @@ jobs:
                 },
               },
             }' | gh api graphql --input -
+
+      # A commit made with the workflow token does not trigger push workflows,
+      # so the deploy has to be started explicitly.
+      - name: Deploy the refreshed site
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh workflow run pages.yml --repo "$GITHUB_REPOSITORY" --ref main
