@@ -1,5 +1,14 @@
 [
   {
+    "description": "Default community health files for StrongWind1 repositories",
+    "homepage": "https://strongwind.dev/",
+    "html_url": "https://github.com/StrongWind1/.github",
+    "language": null,
+    "name": ".github",
+    "stargazers_count": 0,
+    "topics": ["community-health", "github", "security-policy"]
+  },
+  {
     "description": "Derive Active Directory password hashes and Kerberos keys from a cleartext password - the inverse of NTDSWolf",
     "homepage": "https://strongwind.dev/AD-SecretGen/",
     "html_url": "https://github.com/StrongWind1/AD-SecretGen",
@@ -108,7 +117,7 @@
     "description": "Comprehensive reference for Kerberos authentication in Microsoft Active Directory - protocol internals, security configuration, and attack techniques",
     "homepage": "https://strongwind.dev/Kerberos/",
     "html_url": "https://github.com/StrongWind1/Kerberos",
-    "language": "JavaScript",
+    "language": "Markdown",
     "name": "Kerberos",
     "stargazers_count": 8,
     "topics": [
