@@ -11,6 +11,6 @@
     "build": "npm run build:fallback && npm run build:sitemap"
   },
   "devDependencies": {
-    "prettier": "3.9.4"
+    "prettier": "3.10.1"
   }
 }
