@@ -82,8 +82,9 @@
     "https://api.github.com/users/StrongWind1/repos?per_page=100&sort=pushed";
   var CACHE = "/assets/repos.json";
 
-  // Non-tool repos that must never render: the org profile readme and this site.
-  var EXCLUDE = { "StrongWind1": 1, "StrongWind1.github.io": 1 };
+  // Repos that must never render: the profile readme, this site, and tpwalk.
+  // Keep in step with the select() in refresh-repos-cache.yml.
+  var EXCLUDE = { "StrongWind1": 1, "StrongWind1.github.io": 1, "tpwalk": 1 };
 
   // The sole per-repo override. These are documentation, not code, and GitHub
   // misreports their language (JavaScript/Makefile), so force a Reference badge.
@@ -99,7 +100,6 @@
     "ntcompress": "https://pypi.org/project/ntcompress/",
     "office-password-toolkit":
       "https://pypi.org/project/office-password-toolkit/",
-    "tpwalk": "https://pypi.org/project/tpwalk/",
     "NFSWolf": "https://crates.io/crates/nfswolf",
     "WPAWolf": "https://crates.io/crates/wpawolf",
     "WEPWolf": "https://crates.io/crates/wepwolf",

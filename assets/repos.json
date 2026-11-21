@@ -25,7 +25,7 @@
     "html_url": "https://github.com/StrongWind1/ArchiveWolf",
     "language": "Rust",
     "name": "ArchiveWolf",
-    "stargazers_count": 0,
+    "stargazers_count": 1,
     "topics": [
       "7zip",
       "bkcrack",
@@ -310,25 +310,6 @@
       "svelte",
       "tailwindcss",
       "typescript"
-    ]
-  },
-  {
-    "description": "TP-Link GPL source and firmware URL scraper, verifier, and downloader",
-    "homepage": "https://strongwind.dev/tpwalk/",
-    "html_url": "https://github.com/StrongWind1/tpwalk",
-    "language": "Python",
-    "name": "tpwalk",
-    "stargazers_count": 2,
-    "topics": [
-      "downloader",
-      "firmware",
-      "gpl",
-      "iot",
-      "python",
-      "router",
-      "scraper",
-      "security",
-      "tp-link"
     ]
   }
 ]

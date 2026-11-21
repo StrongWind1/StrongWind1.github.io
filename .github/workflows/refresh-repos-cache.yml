@@ -54,7 +54,7 @@ jobs:
           gh api "users/StrongWind1/repos?per_page=100&sort=pushed" --jq '
             [ .[]
               | select(.fork == false and .archived == false and .private == false)
-              | select(.name != "StrongWind1" and .name != "StrongWind1.github.io")
+              | select(.name != "StrongWind1" and .name != "StrongWind1.github.io" and .name != "tpwalk")
               | {name, description, language, stargazers_count, html_url, homepage, topics}
             ] | sort_by(.name)' > assets/repos.json
 

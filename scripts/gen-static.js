@@ -31,7 +31,6 @@ const PACKAGES = {
   "ntcompress": "https://pypi.org/project/ntcompress/",
   "office-password-toolkit":
     "https://pypi.org/project/office-password-toolkit/",
-  "tpwalk": "https://pypi.org/project/tpwalk/",
   "NFSWolf": "https://crates.io/crates/nfswolf",
   "WPAWolf": "https://crates.io/crates/wpawolf",
   "WEPWolf": "https://crates.io/crates/wepwolf",
