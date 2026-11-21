@@ -231,7 +231,7 @@
     ]
   },
   {
-    "description": "Complete technical reference for WPA/WPA2/WPA3 PSK security analysis",
+    "description": "IEEE 802.11 security reference: WPA/WPA2/WPA3 PSK, EAP, and WEP, from protocol internals to cracking",
     "homepage": "https://strongwind.dev/WiFi_Cracking/",
     "html_url": "https://github.com/StrongWind1/WiFi_Cracking",
     "language": "Makefile",
