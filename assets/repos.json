@@ -1,6 +1,6 @@
 [
   {
-    "description": "Derive Active Directory password hashes and Kerberos keys from a cleartext password - the inverse of NTDSWolf",
+    "description": "Derive Active Directory password hashes and Kerberos keys from a cleartext password, the inverse of NTDSWolf",
     "homepage": "https://strongwind.dev/AD-SecretGen/",
     "html_url": "https://github.com/StrongWind1/AD-SecretGen",
     "language": "Python",
@@ -43,7 +43,7 @@
     ]
   },
   {
-    "description": "Validate AD credentials over NTLM and Kerberos - passwords, hashes, keys, and tickets",
+    "description": "Validate AD credentials over NTLM and Kerberos: passwords, hashes, keys, and tickets",
     "homepage": "https://strongwind.dev/CredWolf/",
     "html_url": "https://github.com/StrongWind1/CredWolf",
     "language": "Python",
@@ -107,7 +107,7 @@
     ]
   },
   {
-    "description": "Comprehensive reference for Kerberos authentication in Microsoft Active Directory - protocol internals, security configuration, and attack techniques",
+    "description": "Comprehensive reference for Kerberos authentication in Microsoft Active Directory: protocol internals, security configuration, and attack techniques",
     "homepage": "https://strongwind.dev/Kerberos/",
     "html_url": "https://github.com/StrongWind1/Kerberos",
     "language": "Markdown",
@@ -126,7 +126,7 @@
     ]
   },
   {
-    "description": "Fast native NFS security toolkit - recon, analysis, escape, exploitation, and interactive shell over NFSv2/v3/v4",
+    "description": "Fast native NFS security toolkit: recon, analysis, escape, exploitation, and interactive shell over NFSv2/v3/v4",
     "homepage": "https://strongwind.dev/NFSWolf/",
     "html_url": "https://github.com/StrongWind1/NFSWolf",
     "language": "Rust",
@@ -165,7 +165,7 @@
     ]
   },
   {
-    "description": "Correct, spec-compliant Active Directory password change, reset, and policy read over SAMR, Netlogon, LSA, Kerberos, and LDAP - including the AES paths impacket lacks",
+    "description": "Correct, spec-compliant Active Directory password change, reset, and policy read over SAMR, Netlogon, LSA, Kerberos, and LDAP, including the AES paths impacket lacks",
     "homepage": "https://strongwind.dev/PassWolf/",
     "html_url": "https://github.com/StrongWind1/PassWolf",
     "language": "Python",
