@@ -97,13 +97,16 @@
     "NTDSWolf": "https://pypi.org/project/ntdswolf/",
     "PassWolf": "https://pypi.org/project/passwolf/",
     "ntcompress": "https://pypi.org/project/ntcompress/",
+    "office-password-toolkit":
+      "https://pypi.org/project/office-password-toolkit/",
     "tpwalk": "https://pypi.org/project/tpwalk/",
+    "NFSWolf": "https://crates.io/crates/nfswolf",
     "WPAWolf": "https://crates.io/crates/wpawolf",
     "WEPWolf": "https://crates.io/crates/wepwolf",
   };
 
   // Sections are derived from repo topics, rendered top to bottom. A repo joins
-  // the first section whose test matches; anything unmatched falls to Network.
+  // the first section whose test matches; anything unmatched falls to Other.
   var SECTIONS = [
     {
       title: "Active Directory & Windows",
@@ -121,8 +124,20 @@
         );
       },
     },
+    {
+      title: "Network",
+      test: function (t) {
+        return hasTopic(t, "scanner");
+      },
+    },
+    {
+      title: "Encrypted Files",
+      test: function (t) {
+        return hasTopic(t, "password-recovery");
+      },
+    },
   ];
-  var CATCH_ALL = "Network";
+  var CATCH_ALL = "Other";
 
   function hasTopic(topics, needle) {
     return topics.some(function (x) {

@@ -29,7 +29,10 @@ const PACKAGES = {
   "NTDSWolf": "https://pypi.org/project/ntdswolf/",
   "PassWolf": "https://pypi.org/project/passwolf/",
   "ntcompress": "https://pypi.org/project/ntcompress/",
+  "office-password-toolkit":
+    "https://pypi.org/project/office-password-toolkit/",
   "tpwalk": "https://pypi.org/project/tpwalk/",
+  "NFSWolf": "https://crates.io/crates/nfswolf",
   "WPAWolf": "https://crates.io/crates/wpawolf",
   "WEPWolf": "https://crates.io/crates/wepwolf",
 };
@@ -48,8 +51,16 @@ const SECTIONS = [
       hasTopic(t, "wireless") ||
       t.indexOf("802-11") !== -1,
   },
+  {
+    title: "Network",
+    test: (t) => hasTopic(t, "scanner"),
+  },
+  {
+    title: "Encrypted Files",
+    test: (t) => hasTopic(t, "password-recovery"),
+  },
 ];
-const CATCH_ALL = "Network";
+const CATCH_ALL = "Other";
 
 function hasTopic(topics, needle) {
   return topics.some((x) => x.indexOf(needle) !== -1);
