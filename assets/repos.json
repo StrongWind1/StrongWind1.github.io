@@ -234,7 +234,7 @@
     "description": "IEEE 802.11 security reference: WPA/WPA2/WPA3 PSK, EAP, and WEP, from protocol internals to cracking",
     "homepage": "https://strongwind.dev/WiFi_Cracking/",
     "html_url": "https://github.com/StrongWind1/WiFi_Cracking",
-    "language": "Makefile",
+    "language": "JavaScript",
     "name": "WiFi_Cracking",
     "stargazers_count": 5,
     "topics": [
